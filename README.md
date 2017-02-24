@@ -1,5 +1,5 @@
 
-#Projeto - Desafio Cielo
+#MicroService - Desafio Cielo
 
 ##Tecnologias utilizadas:
 
