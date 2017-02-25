@@ -26,7 +26,7 @@ MockMvc - Testes Integrados
 
 Clean architecture
 -----------------
-![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/android10/Sample-Data/blob/master/Android-CleanArchitecture/clean_architecture.png)
+(https://github.com/andreoliveirainformatica/desafio/blob/master/CleanArchitecture.jpg)
 
 ##Utilização:
 
