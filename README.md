@@ -26,13 +26,17 @@ Clean architecture
 ![http://fernandocejas.com/2015/07/18/architecting-android-the-evolution/](https://github.com/android10/Sample-Data/blob/master/Android-CleanArchitecture/clean_architecture.png)
 
 ##Utilização:
+
 http://localhost:8080/api/extrato/12996721001597 (POST)
 Request Body
+```
 {
     "dataInicial": "02/06/2016",
     "dataFinal": "03/06/2016"
 }
+```
 Response Body
+```
 [
   {
     "dataLancamento": "02/06/2016",
@@ -80,3 +84,4 @@ Response Body
     "cnpj": "12996721001597"
   }
 ]
+```
