@@ -27,7 +27,10 @@ Clean architecture
 
 ##Utilização:
 
-http://localhost:8080/api/extrato/12996721001597 (POST)
+http://localhost:8080/api/extrato/12996721001597 
+
+(POST)
+
 Request Body
 ```
 {
