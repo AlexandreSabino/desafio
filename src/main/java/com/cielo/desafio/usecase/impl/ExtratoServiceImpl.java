@@ -3,6 +3,7 @@ package com.cielo.desafio.usecase.impl;
 import com.cielo.desafio.entity.ControleLancamento;
 import com.cielo.desafio.gateway.LancamentoLegadoRepository;
 import com.cielo.desafio.http.dto.ExtratoDTO;
+import com.cielo.desafio.http.dto.PeriodoDTO;
 import com.cielo.desafio.usecase.ExtratoConverter;
 import com.cielo.desafio.usecase.ExtratoService;
 import lombok.AllArgsConstructor;
@@ -26,19 +27,10 @@ public class ExtratoServiceImpl implements ExtratoService {
     private final ExtratoConverter extratoConverter;
 
     @Override
-    public List<ExtratoDTO> findAll() {
-        return lancamentoLegadoRepository.findAll().stream()
-                .flatMap(lancamentoLegado -> lancamentoLegado.getListaControleLancamento().stream().map(
-                        controleLancamento -> extratoConverter.convert(controleLancamento)))
-                .sorted(Comparator.comparing(ExtratoDTO::getDataLancamento))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<ExtratoDTO> findByCnpjAndDataLancamentoBetween(String cnpjCliente, LocalDate dataInicial, LocalDate dataFinal) {
+    public List<ExtratoDTO> findByCnpjAndDataLancamentoBetween(String cnpjCliente, PeriodoDTO periodoDTO) {
         return lancamentoLegadoRepository.findAll().stream()
                 .flatMap(lancamentoLegado -> lancamentoLegado.getListaControleLancamento().stream().
-                        filter(getFilter(cnpjCliente, dataInicial, dataFinal)).
+                        filter(getFilter(cnpjCliente, periodoDTO.getDataInicial(), periodoDTO.getDataFinal())).
                         map(controleLancamento -> extratoConverter.convert(controleLancamento)))
                 .sorted(Comparator.comparing(ExtratoDTO::getDataLancamento))
                 .collect(Collectors.toList());

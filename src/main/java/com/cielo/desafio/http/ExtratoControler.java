@@ -35,14 +35,13 @@ public class ExtratoControler {
             @ApiResponse(code = 401, message = "Unauthorized"),
             @ApiResponse(code = 500, message = "Failure")})
     @PostMapping("/extrato/{cnpj}")
-    public ResponseEntity<List<ExtratoDTO>> extrato(@ApiParam @PathVariable String cnpj, @RequestBody@Valid final PeriodoDTO periodoDTO)
+    public ResponseEntity<List<ExtratoDTO>> extrato(@ApiParam @PathVariable String cnpj, @RequestBody @Valid final PeriodoDTO periodo)
             throws URISyntaxException {
         log.debug("REST request to get extrato");
 
         List<ExtratoDTO> content = extratoService.findByCnpjAndDataLancamentoBetween(
                 cnpj,
-                periodoDTO.getDataInicial(),
-                periodoDTO.getDataFinal());
+                periodo);
 
         return new ResponseEntity<>(content, HttpStatus.OK);
     }
