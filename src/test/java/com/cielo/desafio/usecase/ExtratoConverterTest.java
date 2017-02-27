@@ -5,6 +5,7 @@ import com.cielo.desafio.entity.ControleLancamento;
 import com.cielo.desafio.entity.LancamentoLegado;
 import com.cielo.desafio.http.dto.ExtratoDTO;
 import com.cielo.desafio.http.util.JsonHelper;
+import com.cielo.desafio.usecase.impl.ExtratoConverter;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,4 +1,4 @@
-package com.cielo.desafio.usecase;
+package com.cielo.desafio.usecase.impl;
 
 import com.cielo.desafio.entity.ControleLancamento;
 import com.cielo.desafio.http.dto.DadosBancariosDTO;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 public class ExtratoConverter implements Converter<ControleLancamento, ExtratoDTO> {
     @Override
     public ExtratoDTO convert(ControleLancamento controleLancamento) {
-
         return  ExtratoDTO.builder()
                 .dataLancamento(controleLancamento.getDataLancamentoContaCorrenteCliente())
                 .nomeTipoOperacao(controleLancamento.getLancamentoContaCorrenteCliente().getTipoOperacao().toString())

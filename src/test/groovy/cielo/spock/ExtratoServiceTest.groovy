@@ -1,11 +1,12 @@
 package cielo.spock
 
+import com.cielo.desafio.config.ApplicationProperties;
 import com.cielo.desafio.config.response.WebPartialConfig
 import com.cielo.desafio.gateway.LancamentoLegadoRepository
 import com.cielo.desafio.gateway.impl.LancamentoLegadoRepositoryImpl
 import com.cielo.desafio.http.dto.PeriodoDTO
 import com.cielo.desafio.http.util.JsonHelper
-import com.cielo.desafio.usecase.ExtratoConverter
+import com.cielo.desafio.usecase.impl.ExtratoConverter
 import com.cielo.desafio.usecase.ExtratoService
 import com.cielo.desafio.usecase.impl.ExtratoServiceImpl
 import spock.lang.Specification
@@ -23,7 +24,8 @@ class ExtratoServiceSpecTest extends Specification {
     private JsonHelper jsonHelper = new JsonHelper(new WebPartialConfig().getObjectMapper())
     private LancamentoLegadoRepository lancamentoLegadoRepository = new LancamentoLegadoRepositoryImpl(jsonHelper)
     private ExtratoConverter extratoConverter = new ExtratoConverter()
-    private ExtratoService extratoService = new ExtratoServiceImpl(lancamentoLegadoRepository, extratoConverter)
+    private ApplicationProperties applicationProperties = new ApplicationProperties()
+    private ExtratoService extratoService = new ExtratoServiceImpl(lancamentoLegadoRepository, extratoConverter, applicationProperties)
 
     def "Consultar o extrato de um cliente em um período"() {
 
