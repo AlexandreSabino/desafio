@@ -1,7 +1,8 @@
 
 #MicroService - Desafio Cielo
-###Construir Docker image: mvn clean package docker:build
-### 
+
+#####Construir Docker image: mvn clean package docker:build
+#####Rodar aplicação: docker run -p 8080:8080 -d desafio_cielo 
 
 ##Tecnologias utilizadas:
 
