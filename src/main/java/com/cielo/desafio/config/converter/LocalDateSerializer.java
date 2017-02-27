@@ -10,9 +10,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-/**
- * Created by andre.oliveira on 2/23/17.
- */
 @AllArgsConstructor
 public class LocalDateSerializer extends JsonSerializer<LocalDate> {
 

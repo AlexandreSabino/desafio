@@ -9,9 +9,6 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by andre.oliveira on 2/24/17.
- */
 public class ExtratoConverterTest {
 
     private static final String pathJson = "lancamento-conta-legado.json";

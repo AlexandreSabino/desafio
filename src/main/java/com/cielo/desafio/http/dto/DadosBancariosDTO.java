@@ -5,9 +5,6 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/**
- * Created by andre.oliveira on 2/23/17.
- */
 @Data
 @Builder
 public class DadosBancariosDTO implements Serializable {

@@ -1,5 +1,7 @@
 
 #MicroService - Desafio Cielo
+###Construir Docker image: mvn clean package docker:build
+### 
 
 ##Tecnologias utilizadas:
 

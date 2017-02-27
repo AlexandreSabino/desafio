@@ -1,6 +1,6 @@
 FROM anapsix/alpine-java
 MAINTAINER Andre de Oliveira
-COPY target/extrato-0.0.1-SNAPSHOT.jar /home/extrato-0.0.1-SNAPSHOT.jar
-VOLUME /tmp
+ADD /maven/extrato-0.0.1-SNAPSHOT.jar myapp.jar
+RUN sh -c 'touch /myapp.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/myapp.jar"]
 EXPOSE 8080
-RUN java -jar /home/extrato-0.0.1-SNAPSHOT.jar

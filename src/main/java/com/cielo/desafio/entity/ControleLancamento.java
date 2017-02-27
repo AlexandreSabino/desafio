@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.Date;
 
 @Data
-
 public class ControleLancamento implements Serializable {
 
     private LancamentoContaCorrenteCliente lancamentoContaCorrenteCliente;

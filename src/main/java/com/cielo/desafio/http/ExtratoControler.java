@@ -45,6 +45,4 @@ public class ExtratoControler {
 
         return new ResponseEntity<>(content, HttpStatus.OK);
     }
-
-
 }

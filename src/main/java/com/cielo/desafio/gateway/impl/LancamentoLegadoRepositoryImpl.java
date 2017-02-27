@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Collection;
 
-/**
- * Created by andre.oliveira on 2/23/17.
- */
 @Component
 @AllArgsConstructor
 public class LancamentoLegadoRepositoryImpl implements LancamentoLegadoRepository {

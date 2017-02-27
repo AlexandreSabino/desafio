@@ -7,11 +7,14 @@ import com.cielo.desafio.http.dto.PeriodoDTO;
 import com.cielo.desafio.usecase.ExtratoConverter;
 import com.cielo.desafio.usecase.ExtratoService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executors;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -20,6 +23,7 @@ import java.util.stream.Collectors;
  */
 @Component
 @AllArgsConstructor
+@Slf4j
 public class ExtratoServiceImpl implements ExtratoService {
 
     private final LancamentoLegadoRepository lancamentoLegadoRepository;
@@ -31,9 +35,18 @@ public class ExtratoServiceImpl implements ExtratoService {
         return lancamentoLegadoRepository.findAll().stream()
                 .flatMap(lancamentoLegado -> lancamentoLegado.getListaControleLancamento().stream().
                         filter(getFilter(cnpjCliente, periodoDTO.getDataInicial(), periodoDTO.getDataFinal())).
-                        map(controleLancamento -> extratoConverter.convert(controleLancamento)))
+                        map(controleLancamento -> runAsync(controleLancamento)))
                 .sorted(Comparator.comparing(ExtratoDTO::getDataLancamento))
                 .collect(Collectors.toList());
+    }
+
+    private ExtratoDTO runAsync(ControleLancamento controleLancamento) throws RuntimeException {
+        try {
+            return CompletableFuture.supplyAsync(() -> extratoConverter.convert(controleLancamento), Executors.newFixedThreadPool(1)).get();
+        } catch (Exception e) {
+            log.error("Erro ao conveter dados do extrato", e);
+            throw  new RuntimeException(e.getMessage());
+        }
     }
 
     private Predicate<? super ControleLancamento> getFilter(String cnpjCliente, LocalDate dataInicial, LocalDate dataFinal) {

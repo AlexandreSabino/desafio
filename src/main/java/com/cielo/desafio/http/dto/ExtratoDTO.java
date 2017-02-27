@@ -7,9 +7,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-/**
- * Created by andre.oliveira on 2/23/17.
- */
 @Data
 @Builder
 public class ExtratoDTO implements Serializable {
