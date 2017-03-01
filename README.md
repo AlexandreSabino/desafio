@@ -11,8 +11,7 @@ Java 8
 
 SpringBoot
 
-SpringFox/Swagger
-
+SpringFox/Swagger - Documentação da API
 ###Testes
 Jacoco - para testes de cobertura - Relatório gerado em: target/site/jacoco/index.html
 
